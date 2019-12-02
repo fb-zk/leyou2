@@ -57,7 +57,7 @@ public class BrandService {
 //            brandMapper.insertCategoryBrand(brand.getId(),cid);
 //        }
         cids.forEach(cid->{
-            brandMapper.insertCategoryBrand(brand.getId(), cid);
+            brandMapper.insertCategoryBrand(cid, brand.getId());
         });
     }
 }

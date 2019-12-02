@@ -37,6 +37,12 @@ public class BrandController {
         return ResponseEntity.ok(brandPageResult);
     }
 
+    /**
+     * 新增品牌
+     * @param brand
+     * @param cids
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam("cids") List<Long> cids){
         brandService.saveBrand(brand,cids);

@@ -7,6 +7,6 @@ import tk.mybatis.mapper.common.Mapper;
 
 
 public interface BrandMapper extends Mapper<Brand> {
-    @Insert("insert  tb_category_brand (category_id, brand_id) values (#(bid),#(cid))")
-    int insertCategoryBrand(@Param("bid") Long bid , @Param("cid") Long cid);
+    @Insert("insert  tb_category_brand (category_id, brand_id) values (#(cid),#(bid))")
+    int insertCategoryBrand(@Param("cid") Long cid , @Param("bid") Long bid);
 }
