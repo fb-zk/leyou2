@@ -49,15 +49,16 @@ public class BrandService {
 
     @Transactional
     public void saveBrand(Brand brand, List<Long> cids) {
-        int i = brandMapper.insertSelective(brand);
-        if (i<1){
+        int count = brandMapper.insertSelective(brand);
+        if (count!=1){
             throw new LyException(ExceptionEnum.BRAND_SAVE_ERROR);
         }
-//        for (Long cid : cids) {
-//            brandMapper.insertCategoryBrand(brand.getId(),cid);
-//        }
-        cids.forEach(cid->{
-            brandMapper.insertCategoryBrand(cid, brand.getId());
-        });
+        System.out.println(brand.getId());
+        for (Long cid : cids) {
+           count = brandMapper.insertCategoryBrand(brand.getId(),cid);
+           if (count!=1){
+               throw new LyException(ExceptionEnum.BRAND_SAVE_ERROR);
+           }
+        }
     }
 }
